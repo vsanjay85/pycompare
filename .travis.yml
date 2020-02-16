@@ -18,10 +18,10 @@ jobs:
 install:
 - pip3 install --upgrade pip
 - pip3 install -r requirements.txt
-script: pyinstaller comparator.py --onefile
+script: pyinstaller --add-data="version.txt:." comparator.py --onefile
 
 before_deploy:
-  - export TRAVIS_TAG="1.$TRAVIS_BUILD_NUMBER"
+  - export TRAVIS_TAG="v0.1.$TRAVIS_BUILD_NUMBER"
   - git tag $TRAVIS_TAG
 
 deploy:
