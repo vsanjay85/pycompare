@@ -20,9 +20,9 @@ deploy:
   provider: releases
   api_key:
     secure: RiiBYyry5qjE/OsYAYZ6Ub6XxRnNsmglCD4stbQN92U3gI2Ey4w2i8opZ7aLn/GtspWC9OmVvzimR4vFQeL4WkZpM9ktg5V2HFiCQMh5gJdPmFbaj+cDKvOLJ5sTSXibGUw7WF+ygzt0R1UweCpyKwQjlTygKpSCz3UldMYTud0ViLhWcthIvhx0sk8KYIkxH6+N6HkLPsvPdPdxcBM21J9bbJgAH1TaGIn66nzf7j5+0LegE3yvO9sK1fsHNEKeHnaFMzJcUkzNGFCNoqcMAG6qIEitw7l3pxwV9JWyMP/GRrBoVGUUt6O71g7igfymcuixqJMbdK1CGA3OOYg/egVs5HSZGPafyFKWp75JWPSw8UrCROAimhnQXsXZzaL/teS9lfxYvlEK6OdXbFcuFKyzBf+KDoMKX2BJjyI8pDxhhiZTrcArdQwZjwLF/my683TUNnLP2kczewbYpwMc7uuyXshwaqTK+m5piL4pmJ5e4RP9OTq1MG8l6C+Mb2nrSBaWiKFXGFXiLTI1wus0D5pWcp7B4lUxwafuR2/HgJyKCqjAOLjwXDrl240/kAS06EdsXXKEFOvwuRgHpI7/F8EspjJlR/HPneix5/LP16PXK5qnM3HKuHXZEjPso65zwuuDyXu3ok9JQ7A71NigXOGmV8wQOO1caPtqHvGFQ8E=
-  file: 
-    - dist\comparator.exe
-    - dist/comparator
+  file_glob: true
+  file: dist/*
+  skip_cleanup: true
   on:
     repo: vsanjay85/pycompare
     branches:

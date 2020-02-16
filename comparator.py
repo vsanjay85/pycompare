@@ -25,19 +25,16 @@ def csv_writer(processed_list):
             img_writer.writerow(item)
 
 if __name__ == "__main__":
+    processed_list = []
     with open('images.csv', newline='') as csvfile:
-        processed_list = []
         img_reader = csv.reader(csvfile, delimiter=',')
         for row in img_reader:
             print(row[0])
-            #imageA=np.array(image.open(row[0]))
-            #imageB=np.array(image.open(row[1]))
             image_a = cv2.imread(row[0])
             image_b = cv2.imread(row[1])
-            #print(imageA.astype("float"))
             start = time.time()
             score = mse(image_a, image_b)
             elapsed = str(round(time.time() - start, 4))
             processed_list.append({"SourceImg":row[0], 'DestImg':row[1], 'SimilarityScore':score, 'Elapsed':elapsed})
-        print(processed_list)
+
         csv_writer(processed_list)
