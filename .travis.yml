@@ -33,7 +33,7 @@ before_deploy:
     if [[ "${TRAVIS_OS_NAME}" == "osx" ]] || [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
       pyinstaller --add-data="version.txt:." comparator.py --onefile
     else
-      pyinstaller --add-data="version.txt$;." comparator.py --onefile
+      pyinstaller --add-data="version.txt;." comparator.py --onefile
     fi
 
 deploy:
