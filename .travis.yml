@@ -25,11 +25,10 @@ install:
 - pip3 install -r requirements.txt
 
 before_deploy:
-  script:
-    - export TRAVIS_TAG="v0.1.$TRAVIS_BUILD_NUMBER"
-    - git tag $TRAVIS_TAG
-    - path_sep=os.pathsep
-    - pyinstaller --add-data="version.txt${path_sep}." comparator.py --onefile
+  - export TRAVIS_TAG="v0.1.$TRAVIS_BUILD_NUMBER"
+  - git tag $TRAVIS_TAG
+  - path_sep=os.pathsep
+  - pyinstaller --add-data="version.txt${path_sep}." comparator.py --onefile
 
 deploy:
   provider: releases
