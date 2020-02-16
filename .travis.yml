@@ -2,6 +2,11 @@ language: python
 branches:
   except:
   - /^untagged/
+
+branches:
+  only:
+  - master
+
 jobs:
   include:
   - name: Python 3.7.4 on macOS
@@ -18,11 +23,13 @@ jobs:
 install:
 - pip3 install --upgrade pip
 - pip3 install -r requirements.txt
-script: pyinstaller --add-data="version.txt:." comparator.py --onefile
 
 before_deploy:
-  - export TRAVIS_TAG="v0.1.$TRAVIS_BUILD_NUMBER"
-  - git tag $TRAVIS_TAG
+  script:
+    - export TRAVIS_TAG="v0.1.$TRAVIS_BUILD_NUMBER"
+    - git tag $TRAVIS_TAG
+    - path_sep=os.pathsep
+    - pyinstaller --add-data="version.txt${path_sep}." comparator.py --onefile
 
 deploy:
   provider: releases
