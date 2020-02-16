@@ -1,33 +1,27 @@
-os:
-  - windows
-  - linux
 language: python
-python:
-  - "3.7"
-# command to install dependencies
-install:
-  - pip install -r requirements.txt
-stages:
-  - build
-  #- release
-
-language: python            # this works for Linux but is an error on macOS or Windows
 jobs:
   include:
-    - name: "Python 3.7.4 on macOS"
-      os: osx
-      osx_image: xcode11.2  # Python 3.7.4 running on macOS 10.14.4
-      language: shell       # 'language: python' is an error on Travis CI macOS
-    - name: "Python 3.7.4 on Windows"
-      os: windows           # Windows 10.0.17134 N/A Build 17134
-      language: shell       # 'language: python' is an error on Travis CI Windows
-      before_install:
-        - choco install python --version 3.7.4
-        - python -m pip install --upgrade pip
-      env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
-install: 
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements.txt
-
+  - name: Python 3.7.4 on macOS
+    os: osx
+    osx_image: xcode11.2
+    language: shell
+  - name: Python 3.7.4 on Windows
+    os: windows
+    language: shell
+    before_install:
+    - choco install python --version 3.7.4
+    - python -m pip install --upgrade pip
+    env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+install:
+- pip3 install --upgrade pip
+- pip3 install -r requirements.txt
 script: pyinstaller comparator.py --onefile
-#python3 comparator.py || python comparator.py
+deploy:
+  provider: releases
+  api_key:
+    secure: RiiBYyry5qjE/OsYAYZ6Ub6XxRnNsmglCD4stbQN92U3gI2Ey4w2i8opZ7aLn/GtspWC9OmVvzimR4vFQeL4WkZpM9ktg5V2HFiCQMh5gJdPmFbaj+cDKvOLJ5sTSXibGUw7WF+ygzt0R1UweCpyKwQjlTygKpSCz3UldMYTud0ViLhWcthIvhx0sk8KYIkxH6+N6HkLPsvPdPdxcBM21J9bbJgAH1TaGIn66nzf7j5+0LegE3yvO9sK1fsHNEKeHnaFMzJcUkzNGFCNoqcMAG6qIEitw7l3pxwV9JWyMP/GRrBoVGUUt6O71g7igfymcuixqJMbdK1CGA3OOYg/egVs5HSZGPafyFKWp75JWPSw8UrCROAimhnQXsXZzaL/teS9lfxYvlEK6OdXbFcuFKyzBf+KDoMKX2BJjyI8pDxhhiZTrcArdQwZjwLF/my683TUNnLP2kczewbYpwMc7uuyXshwaqTK+m5piL4pmJ5e4RP9OTq1MG8l6C+Mb2nrSBaWiKFXGFXiLTI1wus0D5pWcp7B4lUxwafuR2/HgJyKCqjAOLjwXDrl240/kAS06EdsXXKEFOvwuRgHpI7/F8EspjJlR/HPneix5/LP16PXK5qnM3HKuHXZEjPso65zwuuDyXu3ok9JQ7A71NigXOGmV8wQOO1caPtqHvGFQ8E=
+  file: 
+    - dist\comparator.exe
+    - dist/comparator
+  on:
+    repo: vsanjay85/pycompare
