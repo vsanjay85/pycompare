@@ -25,3 +25,6 @@ deploy:
     - dist/comparator
   on:
     repo: vsanjay85/pycompare
+    branches:
+      only:
+        - master   
