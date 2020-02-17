@@ -23,7 +23,7 @@ jobs:
 install:
 - pip3 install --upgrade pip
 - pip3 install -r requirements.txt
-script:
+script: pytest
   
 
 before_deploy:

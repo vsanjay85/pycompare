@@ -17,7 +17,7 @@ def window_maker(title,layout,exit_button):
     # Event Loop to process "events" and get the "values" of the inputs
     while True:
         event, values = window.read()
-        if event in (None, exit_button):   # if user closes window or clicks cancel
+        if event in (None, exit_button):   # if user closes window or clicks exit_button
             exit()
         else:
             window.close()
@@ -80,22 +80,23 @@ def version_check():
                     [sg.Button("OK")] ]
         window_maker('Info',layout,'')
 
-def comparator():
+def comparator(csvfile):
     processed_list = []
-    with open('images.csv', newline='') as csvfile:
-        img_reader = csv.reader(csvfile, delimiter=',')
-        for row in img_reader:
-            print(row[0])
-            image_a = cv2.imread(row[0])
-            image_b = cv2.imread(row[1])
-            start = time.time()
-            score = mse(image_a, image_b)
-            elapsed = str(round(time.time() - start, 4))
-            processed_list.append({"SourceImg":row[0], 'DestImg':row[1], 'SimilarityScore':score, 'Elapsed':elapsed})
+    print(csvfile)
+    img_reader = csv.reader(csvfile, delimiter=',')
+    for row in img_reader:
+        print(row[0])
+        image_a = cv2.imread(row[0])
+        image_b = cv2.imread(row[1])
+        start = time.time()
+        score = mse(image_a, image_b)
+        elapsed = str(round(time.time() - start, 4))
+        processed_list.append({"SourceImg":row[0], 'DestImg':row[1], 'SimilarityScore':score, 'Elapsed':elapsed})
 
-        return processed_list
+    return processed_list
 
 def mse(image_a, image_b):
+    print(image_a,image_b)
     # From: https://www.pyimagesearch.com/2014/09/15/python-compare-two-images/#
     # the 'Mean Squared Error' between the two images is the
     # sum of the squared difference between the two images;
@@ -118,7 +119,8 @@ def csv_writer(processed_list):
 if __name__ == "__main__":
     help()
     version_check()
-    processed_list=comparator()
+    with open('images.csv', newline='') as csvfile:
+        processed_list=comparator(csvfile)
     if csv_writer(processed_list):
         text = '''
         Program finished successfully.
