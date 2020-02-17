@@ -7,6 +7,21 @@ The algorithm is based on MSE (Mean Squared Error) and a part of the Python code
 
 TravisCI builds the python code into two executables; one for MacOS and another one for Windows; and uploads it to this Github repo under 'Releases' [here](https://github.com/vsanjay85/pycompare/releases).
 
+## Explanation
+
+#### Considerations 
+##### How do you know if your code works?
+- `pytest` unit tests are written in `comparator_test.py`. Running `pytest` from the command line will test basic functionality. It wasn't possible to integrate this into TravisCI because of [an issue with opencv-python](https://travis-ci.community/t/python-and-opencv-dll-load-fails-every-time/4431/11) on Windows.
+- You may also run `python comparator.py` to test functionality before committing changes. A sample `images.csv` and test images are provided `images` folder.
+
+##### How are you going to teach Bjorn how to use the program? 
+- A help dialog pops up every time the program is run. ![help-dialog](help_images/help_dialog.png)
+
+ - Your manager Jeanie is assigning you to a
+   different task and is making Ferris the maintainer of your
+   application. How do you make sure he succeeds?
+- How are you ensuring Bjorn gets the latest version of your application?
+
 ## Running this program 
 Download an executable for your operating system (MacOS or Windows) from the [releases](https://github.com/vsanjay85/pycompare/releases) page. 
 
@@ -36,6 +51,7 @@ This file will contain four columns:
 #### How to use this repo
 
  - Install Python 3.7 or up
+ - Open a terminal (Unix) or powershell (Windows) window
  - Create a [virtualenv](https://docs.python.org/3.7/library/venv.html), ensuring the venv is based on python 3.7
  - Activate the virtualenv
  - Clone this repo
@@ -43,4 +59,5 @@ This file will contain four columns:
  - Create a new branch `git checkout -b <branch-name>`
  - Make your modifications to the code
  - Test the functioning of the code by running: `python comparator.py`. Code will use the sample `images.csv` and images from the `images` folder. Python works with both `/` and `\` path separators without issues.
+ - If you'd prefer creating an executable to test, run the appropriate `pyinstaller` command from file `.travis.yml`. This creates an executable in the `dist` folder. 
  - Once tested and satisfied, push your changes to your branch `git push`
