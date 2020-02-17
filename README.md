@@ -37,7 +37,7 @@ Path must be compatible with the OS. Windows paths are of style: `C:/Users/<-use
 The program doesn't yet accept files of GIF and TIFF formats due to opencv-python's limitations with licensing. This will be addressed in a future version.
 
 #### Execute
-Execute the program by double-clicking on the executable file. You will first be presented with a help dialog b
+Execute the program by double-clicking on the executable file. You will first be presented with a help dialog box. See: https://github.com/vsanjay85/pycompare#how-are-you-going-to-teach-bjorn-how-to-use-the-program
 
 If the program runs successfully, you will be presented with a window citing so, and a file named `processed_images.csv` will be placed in the same folder where the executable was placed.
 
