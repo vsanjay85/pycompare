@@ -9,8 +9,6 @@ import PySimpleGUI as sg
 import numpy as np
 from sys import exit
 
-#from PIL import Image as image
-
 def window_maker(title,layout,exit_button):
     # Create the Window
     window = sg.Window(title, layout)

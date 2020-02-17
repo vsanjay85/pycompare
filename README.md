@@ -1,13 +1,10 @@
 # PyCompare
 ## Python-based image similarity calculator
-
 Code in this repo helps calculate a similarity score of two images.
 
 The algorithm is based on MSE (Mean Squared Error) and a part of the Python code was obtained from this [post](https://www.pyimagesearch.com/2014/09/15/python-compare-two-images/).
 
 TravisCI builds the python code into two executables; one for MacOS and another one for Windows; and uploads it to this Github repo under 'Releases' [here](https://github.com/vsanjay85/pycompare/releases).
-
-## Explanation
 
 #### Considerations 
 ##### How do you know if your code works?
