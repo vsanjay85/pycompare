@@ -24,9 +24,8 @@ install:
 - pip3 install --upgrade pip
 - pip3 install -r requirements.txt
 - mkdir C:\Anaconda3
-- mv python3.dll > C:\Anaconda3\python3.dll
+- mv python3.dll C:\Anaconda3\python3.dll
 script: python -m pytest
-  
 
 before_deploy:
   - export TRAVIS_TAG="v0.1.$TRAVIS_BUILD_NUMBER"
