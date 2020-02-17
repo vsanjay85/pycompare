@@ -16,11 +16,13 @@ TravisCI builds the python code into two executables; one for MacOS and another 
 
 ##### How are you going to teach Bjorn how to use the program? 
 - A help dialog pops up every time the program is run. ![help-dialog](/help_images/help_dialog.png)
+- When the program finishes successfully, another dialog pops up letting the user know so. ![finished-dialog](/help_images/finished_dialog.png)
 
- - Your manager Jeanie is assigning you to a
-   different task and is making Ferris the maintainer of your
-   application. How do you make sure he succeeds?
-- How are you ensuring Bjorn gets the latest version of your application?
+##### How are you ensuring Bjorn gets the latest version of your application?
+- A version info dialog pops up if a newer version of the program is available on Github. ![version-dialog](/help_images/version_info.png). Version info is bundled into the executable at build time by 'pyinstaller' and is checked on program startup.
+
+##### Your manager Jeanie is assigning you to a different task and is making Ferris the maintainer of your application. How do you make sure he succeeds?
+- The #Maintainer section of this README contains setup and dev instructions for a future maintainer.
 
 ## Running this program 
 Download an executable for your operating system (MacOS or Windows) from the [releases](https://github.com/vsanjay85/pycompare/releases) page. 
