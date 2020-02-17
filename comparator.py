@@ -4,6 +4,7 @@ import cv2
 import requests
 import github_repo
 import json
+import os
 import PySimpleGUI as sg
 import numpy as np
 from sys import exit
@@ -48,10 +49,25 @@ def help():
                 [sg.Button('Run Program'), sg.Button('Cancel')] ]
     window_maker('Info',layout,'Cancel')
 
+def resource_path(relative_path):
+    # Get absolute path to resource, works for dev and for PyInstaller
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 def version_check():
-    with open('version.txt', 'r') as versionfile:
-        for line in versionfile:
-            version = line
+    path=resource_path('.')
+
+    try:
+        with open(path+'/version.txt', 'r') as versionfile:
+            for line in versionfile:
+                version = line
+    except:
+        version="v0.1.0"  
 
     git_api_url = "https://api.github.com/repos/vsanjay85/pycompare/releases/latest"
     response=requests.get(url=git_api_url)
