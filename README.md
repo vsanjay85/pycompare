@@ -33,8 +33,10 @@ In the same folder populate a CSV file with two columns:
 
 Path must be compatible with the OS. Windows paths are of style: `C:/Users/<-username->/Documents/pycompare/image1.png`. MacOS paths are your typical Unix-style paths: `/Users/<-username->Library/Documents/pycompare/image1.png`
 
-#### Limitations
-The program doesn't yet accept files of GIF and TIFF formats due to opencv-python's limitations with licensing. This will be addressed in a future version.
+#### Limitations and future improvements
+- The program doesn't yet accept files of GIF and TIFF formats due to opencv-python's limitations with licensing. This will be addressed in a future version.
+- We're unable to run pytests [because of a Windows-TravisCI bug](https://github.com/vsanjay85/pycompare#running-this-program). Hopefully, a fix is available in the future.
+- A new version of the program is created on every successful TravisCI build, regardless of whether there's a change in the Python code. This must be fixed to only run on code changes.
 
 #### Execute
 Execute the program by double-clicking on the executable file. You will first be presented with a help dialog box. See: https://github.com/vsanjay85/pycompare#how-are-you-going-to-teach-bjorn-how-to-use-the-program
