@@ -29,6 +29,7 @@ script:
 before_deploy:
   - export TRAVIS_TAG="v0.1.$TRAVIS_BUILD_NUMBER"
   - git tag $TRAVIS_TAG
+  - echo $TRAVIS_TAG > version.txt
   - |
     if [[ "${TRAVIS_OS_NAME}" == "osx" ]] || [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
       pyinstaller --add-data="version.txt:." comparator.py --onefile
