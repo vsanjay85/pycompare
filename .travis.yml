@@ -23,6 +23,8 @@ jobs:
 install:
 - pip3 install --upgrade pip
 - pip3 install -r requirements.txt
+- mkdir C:\Anaconda3
+- mv python3.dll > C:\Anaconda3
 script: python -m pytest
   
 
