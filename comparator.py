@@ -23,7 +23,7 @@ def window_maker(title,layout,exit_button):
             return
     
 def help():
-    text='''
+    text = '''
     This program:
      - Reads from a CSV file.
      - Compares the images for similarity.
@@ -51,16 +51,16 @@ def help():
 def version_check():
     with open('version.txt', 'r') as versionfile:
         for line in versionfile:
-            version=line
+            version = line
 
-    git_api_url="https://api.github.com/repos/vsanjay85/pycompare/releases/latest"
+    git_api_url = "https://api.github.com/repos/vsanjay85/pycompare/releases/latest"
     response=requests.get(url=git_api_url)
-    release_ver=response.json()['tag_name']
+    release_ver = response.json()['tag_name']
     if release_ver > version:
         github_url="https://github.com/vsanjay85/pycompare/releases/latest"
 
-        layout = [  [sg.Text("You're running an older version of this program")],
-                    [sg.Text("Download the latest version from: "+github_url)],
+        layout = [  [sg.Text("You're running version {} of this program".format(version))],
+                    [sg.Text("A newer version is available from: "+github_url)],
                     [sg.Button("OK")] ]
         window_maker('Info',layout,'')
 
@@ -104,7 +104,7 @@ if __name__ == "__main__":
     version_check()
     processed_list=comparator()
     if csv_writer(processed_list):
-        text='''
+        text = '''
         Program finished successfully.
         Results saved to 'processed_images.csv'
         '''
