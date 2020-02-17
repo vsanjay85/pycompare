@@ -15,7 +15,7 @@ TravisCI builds the python code into two executables; one for MacOS and another 
 - You may also run `python comparator.py` to test functionality before committing changes. A sample `images.csv` and test images are provided `images` folder.
 
 ##### How are you going to teach Bjorn how to use the program? 
-- A help dialog pops up every time the program is run. ![help-dialog](help_images/help_dialog.png)
+- A help dialog pops up every time the program is run. ![help-dialog](/help_images/help_dialog.png)
 
  - Your manager Jeanie is assigning you to a
    different task and is making Ferris the maintainer of your
